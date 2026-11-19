@@ -20,8 +20,6 @@
   .hero { position:relative; overflow:hidden; color:#fff; text-align:center;
     background:#0b2440 url('assets/gen-hero-backdrop.jpg') center/cover no-repeat; }
   .hero::before { content:''; position:absolute; inset:0; background:linear-gradient(165deg, rgba(9,28,50,.88), rgba(15,48,87,.72) 55%, rgba(23,80,126,.66)); z-index:0; }
-  .hero3d { position:absolute; top:0; right:0; width:46%; height:100%; display:block; z-index:1; cursor:grab; touch-action:pan-y; }
-  .hero3d:active { cursor:grabbing; }
   .hero-in { position:relative; z-index:2; max-width:860px; margin:0 auto; padding:34px 22px 40px; }
   .herorev { max-width:640px; margin:0 auto 26px; background:rgba(8,18,30,.45); border:1px solid rgba(255,255,255,.35);
     border-radius:16px; padding:18px 22px; backdrop-filter:blur(3px); }
@@ -32,20 +30,24 @@
   .hero .tag { font-family:Arial,sans-serif; font-size:15px; opacity:.94; margin-bottom:16px; }
   .ratepill { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); padding:8px 16px; border-radius:999px; font-family:Arial,sans-serif; font-size:14px; }
   .ratepill .st { color:#ffd34d; letter-spacing:2px; }
-  .draghint { font-family:Arial,sans-serif; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.75; margin-top:18px; }
-  @media (max-width:760px){ .hero3d{ width:100%; opacity:.5; } }
+  .heroimg { max-width:680px; margin:26px auto 0; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.35);
+    box-shadow:0 18px 44px rgba(0,0,0,.5); }
+  .heroimg img { width:100%; height:340px; object-fit:cover; display:block; }
+  @media (max-width:760px){ .heroimg img{ height:230px; } }
 
   section { padding:34px 22px; max-width:920px; margin:0 auto; }
   h2 { font-size:24px; margin-bottom:8px; text-align:center; color:#0f3057; }
   .sub { text-align:center; font-family:Arial,sans-serif; font-size:14px; opacity:.75; margin-bottom:20px; }
-  .sec3d { height:180px; position:relative; overflow:hidden; background:linear-gradient(165deg,#0f3057,#17507e); }
-  .sec3d canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .bandimg { height:210px; overflow:hidden; position:relative; }
+  .bandimg img { width:100%; height:100%; object-fit:cover; display:block; }
+  .bandimg::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(9,28,50,.18), rgba(9,28,50,0) 40%, rgba(9,28,50,.22)); }
+  @media (max-width:760px){ .bandimg{ height:150px; } }
 
   /* ---------- SERVICES ---------- */
   .svcgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
   .svc { background:#ffffff; border:1px solid #d9e2ec; border-radius:16px; overflow:hidden; box-shadow:0 4px 18px rgba(15,48,87,.06); }
-  .svc .svc3d { height:150px; position:relative; background:linear-gradient(160deg,#123f6e,#1b5a94); }
-  .svc .svc3d canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .svc .svcimg { height:165px; overflow:hidden; }
+  .svc .svcimg img { width:100%; height:100%; object-fit:cover; display:block; }
   .svc-body { padding:18px 16px 20px; text-align:center; }
   .svc-ic { width:44px; height:44px; margin:-40px auto 10px; position:relative; z-index:2; border-radius:50%; background:#f08c21; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(240,140,33,.4); border:3px solid #fff; }
   .svc-ic svg { width:23px; height:23px; }
@@ -79,13 +81,63 @@
   .bigcall { display:inline-flex; align-items:center; gap:9px; background:#f08c21; color:#fff; text-decoration:none; padding:15px 30px; border-radius:999px; font-family:Arial,sans-serif; font-size:18px; font-weight:bold; margin-top:14px; box-shadow:0 6px 18px rgba(240,140,33,.35); }
   .bigcall svg { width:20px; height:20px; }
   .ctaband { position:relative; overflow:hidden; text-align:center; color:#fff; padding:44px 22px;
-    background:#0b2440 url('assets/gen-copper-macro.jpg') center/cover no-repeat; }
+    background:#0b2440 url('assets/gen-hero-backdrop.jpg') center/cover no-repeat; }
   .ctaband::before { content:''; position:absolute; inset:0; background:rgba(8,24,44,.72); }
   .ctaband > * { position:relative; z-index:1; }
   .ctaband h2 { color:#fff; }
   .ctaband p { font-family:Arial,sans-serif; font-size:15px; opacity:.92; }
   footer { text-align:center; padding:22px; font-family:Arial,sans-serif; font-size:12px; opacity:.95; background:#0f3057; color:#fff; }
-  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .sec3d,.hero3d,.svc3d{opacity:.92} }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+
+  /* ---------- AI CHATBOT ---------- */
+  .chatfab { position:fixed; right:18px; bottom:18px; z-index:60; display:flex; align-items:center; gap:9px;
+    background:#0f3057; color:#fff; border:2px solid #f08c21; border-radius:999px; padding:12px 18px 12px 14px;
+    font-family:Arial,sans-serif; font-size:14px; font-weight:bold; cursor:pointer;
+    box-shadow:0 10px 28px rgba(6,20,36,.45); }
+  .chatfab svg { width:22px; height:22px; flex:none; }
+  .chatfab .dot { width:9px; height:9px; border-radius:50%; background:#3ddc74; flex:none; box-shadow:0 0 0 3px rgba(61,220,116,.25); }
+  .chatfab:hover { background:#17507e; }
+  @media (max-width:480px){ .chatfab .fabtxt{ display:none; } .chatfab{ padding:14px; border-radius:50%; } }
+  .chatpanel { position:fixed; right:18px; bottom:86px; z-index:61; width:362px; max-width:calc(100vw - 24px);
+    height:548px; max-height:calc(100dvh - 108px); background:#fff; border-radius:18px; overflow:hidden;
+    box-shadow:0 24px 60px rgba(6,20,36,.5); display:none; flex-direction:column;
+    font-family:Arial,sans-serif; border:1px solid #d9e2ec; }
+  .chatpanel.open { display:flex; }
+  @media (max-width:480px){ .chatpanel{ right:12px; bottom:80px; } }
+  .chathead { background:#0f3057; color:#fff; padding:13px 15px; display:flex; align-items:center; gap:11px; flex:none; }
+  .chatava { width:38px; height:38px; border-radius:50%; background:#f08c21; display:flex; align-items:center; justify-content:center; flex:none; }
+  .chatava svg { width:21px; height:21px; }
+  .chathead .ct { font-size:14.5px; font-weight:bold; line-height:1.25; }
+  .chathead .cs { font-size:11.5px; opacity:.85; display:flex; align-items:center; gap:5px; }
+  .chathead .cs i { width:7px; height:7px; border-radius:50%; background:#3ddc74; display:inline-block; }
+  .chatx { margin-left:auto; background:none; border:none; color:#fff; font-size:21px; line-height:1; cursor:pointer; padding:4px 6px; opacity:.9; }
+  .chatmsgs { flex:1; overflow-y:auto; padding:14px 12px; background:#eef3f8; display:flex; flex-direction:column; gap:9px; }
+  .msg { max-width:86%; padding:10px 13px; border-radius:15px; font-size:13.8px; line-height:1.5; }
+  .msg.bot { background:#fff; color:#1d2733; border:1px solid #d9e2ec; border-bottom-left-radius:5px; align-self:flex-start; box-shadow:0 2px 8px rgba(15,48,87,.06); }
+  .msg.user { background:#f08c21; color:#fff; border-bottom-right-radius:5px; align-self:flex-end; }
+  .msg p + p { margin-top:7px; }
+  .msg ul { margin:6px 0 2px 16px; }
+  .msg li { margin-bottom:4px; }
+  .msg .callink { display:inline-flex; align-items:center; gap:6px; margin-top:9px; background:#f08c21; color:#fff;
+    text-decoration:none; font-weight:bold; font-size:13.5px; padding:9px 15px; border-radius:999px; }
+  .msg .callink svg { width:14px; height:14px; }
+  .msg.typing { display:flex; gap:5px; padding:13px 15px; }
+  .msg.typing span { width:7px; height:7px; border-radius:50%; background:#9db4c8; animation:tblink 1.1s infinite; }
+  .msg.typing span:nth-child(2){ animation-delay:.18s; } .msg.typing span:nth-child(3){ animation-delay:.36s; }
+  @keyframes tblink { 0%,80%,100%{ opacity:.3; transform:translateY(0);} 40%{ opacity:1; transform:translateY(-2px);} }
+  .chatchips { flex:none; display:flex; flex-wrap:wrap; gap:7px; padding:10px 12px 4px; background:#eef3f8; }
+  .chip { background:#fff; border:1.5px solid #0f3057; color:#0f3057; border-radius:999px; padding:7px 12px;
+    font-size:12.5px; font-weight:bold; cursor:pointer; font-family:Arial,sans-serif; }
+  .chip:hover { background:#0f3057; color:#fff; }
+  .chip.hot { border-color:#f08c21; color:#c96a08; }
+  .chip.hot:hover { background:#f08c21; color:#fff; }
+  .chatin { flex:none; display:flex; gap:8px; padding:10px 12px 12px; background:#eef3f8; }
+  .chatin input { flex:1; border:1.5px solid #c4d2e0; border-radius:999px; padding:11px 15px; font-size:14px;
+    font-family:Arial,sans-serif; outline:none; background:#fff; min-width:0; }
+  .chatin input:focus { border-color:#f08c21; }
+  .chatin button { flex:none; width:42px; height:42px; border-radius:50%; border:none; background:#f08c21; color:#fff;
+    cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .chatin button svg { width:19px; height:19px; }
 </style>
 </head>
 <body>
@@ -98,25 +150,24 @@
     <a href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Visit</a>
   </nav>
 
-  <!-- HERO — scene 1: drag-rotatable tank; Tanya's review at the top -->
+  <!-- HERO — Tanya's review at the top, hero install photo below -->
   <div class="hero" id="top">
-    <canvas class="d3d hero3d" data-scene="tank" data-drag="1" aria-hidden="true"></canvas>
     <div class="hero-in">
       <div class="herorev"><div class="hr-stars">★★★★★</div><p class="hr-text">Matt replaced and installed our water heater. Called around but others wanted too much or try to sell me expensive replacements. He is the best and answered all my questions. Honest, dependable and trustworthy fair priced service. Definitely hire him! Local hard working business man. Thank You.</p><p class="hr-name">— Tanya, Google review</p></div>
       <h1>Orlando Water Heater Pros</h1>
       <p class="tag">Water heater repair &amp; installation — Orlando, FL</p>
       <div class="ratepill"><span class="st">★★★★★</span> 5 · 79 Google reviews</div>
-      <p class="draghint">Drag the tank to take a look</p>
+      <div class="heroimg"><img src="assets/gen-hero-tank.jpg" alt="Newly installed tank water heater with polished copper piping"></div>
     </div>
   </div>
 
-  <!-- SERVICES — scenes 2–6, one 3D model per service -->
+  <!-- SERVICES — one photo per service -->
   <section id="services">
     <h2>Services</h2>
     <p class="sub">Five specialties — one call, handled start to finish.</p>
     <div class="svcgrid">
       <div class="svc">
-        <div class="svc3d" aria-hidden="true"><canvas class="d3d" data-scene="valve"></canvas></div>
+        <div class="svcimg"><img src="assets/gen-install.jpg" alt="Technician installing a new tank water heater" loading="lazy"></div>
         <div class="svc-body">
           <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></div>
           <h3>Water Heater Installation</h3>
@@ -124,7 +175,7 @@
         </div>
       </div>
       <div class="svc">
-        <div class="svc3d" aria-hidden="true"><canvas class="d3d" data-scene="gearpair"></canvas></div>
+        <div class="svcimg"><img src="assets/gen-repair.jpg" alt="Technician repairing a water heater valve" loading="lazy"></div>
         <div class="svc-body">
           <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1"/></svg></div>
           <h3>Water Heater Repair</h3>
@@ -132,7 +183,7 @@
         </div>
       </div>
       <div class="svc">
-        <div class="svc3d" aria-hidden="true"><canvas class="d3d" data-scene="prism"></canvas></div>
+        <div class="svcimg"><img src="assets/gen-tankless.jpg" alt="Modern tankless water heater" loading="lazy"></div>
         <div class="svc-body">
           <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg></div>
           <h3>Tankless Water Heaters</h3>
@@ -140,7 +191,7 @@
         </div>
       </div>
       <div class="svc">
-        <div class="svc3d" aria-hidden="true"><canvas class="d3d" data-scene="piston"></canvas></div>
+        <div class="svcimg"><img src="assets/gen-boiler.jpg" alt="Modern boiler installation" loading="lazy"></div>
         <div class="svc-body">
           <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
           <h3>Boiler Service</h3>
@@ -148,7 +199,7 @@
         </div>
       </div>
       <div class="svc">
-        <div class="svc3d" aria-hidden="true"><canvas class="d3d" data-scene="orbs"></canvas></div>
+        <div class="svcimg"><img src="assets/gen-solar.jpg" alt="Rooftop solar water heating panels" loading="lazy"></div>
         <div class="svc-body">
           <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-9 0 12-5 16-9 16z"/><path d="M4 21c4-6 8-9 12-11"/></svg></div>
           <h3>Solar Water Heating</h3>
@@ -158,8 +209,8 @@
     </div>
   </section>
 
-  <!-- ABOUT — scene 7: pipe run -->
-  <div class="sec3d" aria-hidden="true"><canvas class="d3d" data-scene="pipes"></canvas></div>
+  <!-- ABOUT — copper pipe band photo -->
+  <div class="bandimg" aria-hidden="true"><img src="assets/gen-pipes.jpg" alt="" loading="lazy"></div>
   <section id="about">
     <h2>About Orlando Water Heater Pros</h2>
     <p class="sub">A local, hard-working Orlando business — honest answers, fair prices.</p>
@@ -180,8 +231,8 @@
     </div>
   </section>
 
-  <!-- REVIEWS — scene 8: glass droplet -->
-  <div class="sec3d" aria-hidden="true"><canvas class="d3d" data-scene="droplet"></canvas></div>
+  <!-- REVIEWS — steaming hot water band photo -->
+  <div class="bandimg" aria-hidden="true"><img src="assets/gen-steam.jpg" alt="" loading="lazy"></div>
   <section class="review" id="reviews">
     <div class="inner">
       <div class="qmark">&ldquo;</div>
@@ -191,8 +242,8 @@
     </div>
   </section>
 
-  <!-- VISIT — scene 9: location pin -->
-  <div class="sec3d" aria-hidden="true"><canvas class="d3d" data-scene="pin"></canvas></div>
+  <!-- VISIT — copper macro band photo -->
+  <div class="bandimg" aria-hidden="true"><img src="assets/gen-copper-macro.jpg" alt="" loading="lazy"></div>
   <section id="visit" class="contact">
     <h2>Visit or Call</h2>
     <p class="addr">7149 Wooded Village Ln, Orlando, FL 32835</p>
@@ -214,437 +265,158 @@
     <a class="bigcall" href="tel:+14077106272"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg> Call (407) 710-6272</a>
   </div>
   <footer>Sample homepage concept prepared for Orlando Water Heater Pros · Built by Pinnacle Tech, Orlando FL</footer>
-<script src="assets/three.min.js"></script>
+
+  <!-- AI CHATBOT -->
+  <button class="chatfab" id="chatFab" aria-label="Chat with the Orlando Water Heater Pros assistant">
+    <span class="dot" aria-hidden="true"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3c-1.5 0-3-.4-4.2-1.1L3 20l1.4-5.1A8.3 8.3 0 0 1 3 11.5 8.4 8.4 0 0 1 11.5 3h1A8.4 8.4 0 0 1 21 11.5z"/></svg>
+    <span class="fabtxt">Chat with us</span>
+  </button>
+  <div class="chatpanel" id="chatPanel" role="dialog" aria-label="Chat with the Orlando Water Heater Pros assistant">
+    <div class="chathead">
+      <div class="chatava"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2.7c.6 3.2-1.2 4.6-2.4 6C8.4 10.2 8 11.4 8 12.7A4.5 4.5 0 0 0 12.5 17 4.6 4.6 0 0 0 17 12.6c0-1.7-.8-2.9-1.7-4.2-.5 1-1.2 1.7-2 2.1.3-2.6-.2-5.4-1.3-7.8z"/><path d="M9.5 21.5a7.8 7.8 0 0 1-2.3-5.4"/></svg></div>
+      <div>
+        <div class="ct">Orlando Water Heater Pros</div>
+        <div class="cs"><i></i> Assistant · replies instantly · open 24/7</div>
+      </div>
+      <button class="chatx" id="chatClose" aria-label="Close chat">&times;</button>
+    </div>
+    <div class="chatmsgs" id="chatMsgs"></div>
+    <div class="chatchips" id="chatChips">
+      <button class="chip" data-q="What services do you offer?">Our services</button>
+      <button class="chip hot" data-q="I have no hot water — help!">No hot water — help!</button>
+      <button class="chip" data-q="What are your hours?">Hours</button>
+      <button class="chip" data-q="Can I get a quote?">Get a quote</button>
+      <button class="chip" data-q="Call Matt">Call Matt</button>
+    </div>
+    <form class="chatin" id="chatForm">
+      <input id="chatInput" type="text" placeholder="Ask about services, hours, quotes…" autocomplete="off" aria-label="Type your message">
+      <button type="submit" aria-label="Send message"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg></button>
+    </form>
+  </div>
+
 <script>
 /* ============================================================
-   PREMIUM 3D ENGINE v2 — Orlando Water Heater Pros
-   Nine scenes: hero tank (drag-rotatable) + one per service
-   (valve / gearpair / prism / piston / orbs) + pipes (about),
-   droplet (reviews), pin (visit). Slow luxury motion, 3-point
-   studio lighting, polished metal/glass materials. Lazy init,
-   pause off-screen, DPR caps, LRU context cap, reduced-motion
-   stills, fail-silent.
+   ORLANDO WATER HEATER PROS — on-page assistant (client-side
+   only, no external calls). Loaded with the business's five
+   services, hours, reviews, emergency guidance and quote
+   handling. Always steers back to calling Matt.
    ============================================================ */
 (function () {
-  try {
-    if (!window.THREE) return;
-    var MAT = 0xc7d2dc, ACC = 0xf08c21, SOFT = 0xa9c8e8;
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TEL = 'tel:+14077106272';
+  var PHONE = '(407) 710-6272';
+  var callBtn = '<a class="callink" href="' + TEL + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg> Call Matt — ' + PHONE + '</a>';
 
-    function metal(color, rough) {
-      return new THREE.MeshStandardMaterial({ color: color, metalness: 0.95, roughness: (rough == null ? 0.2 : rough) });
-    }
-    function satin(color, rough) {
-      return new THREE.MeshStandardMaterial({ color: color, metalness: 0.55, roughness: (rough == null ? 0.42 : rough) });
-    }
-    function glass(color, op) {
-      return new THREE.MeshPhysicalMaterial({
-        color: color, metalness: 0.05, roughness: 0.06, clearcoat: 1, clearcoatRoughness: 0.12,
-        transparent: true, opacity: (op == null ? 0.6 : op)
-      });
-    }
-    function glow(color, op) {
-      return new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: (op == null ? 0.3 : op), blending: THREE.AdditiveBlending, depthWrite: false });
-    }
-    function addLights(scene) {
-      scene.add(new THREE.HemisphereLight(0xffffff, 0x2a2622, 0.75));
-      var key = new THREE.DirectionalLight(0xfff2dd, 1.6); key.position.set(4, 6, 7); scene.add(key);
-      var rim = new THREE.PointLight(ACC, 55, 60); rim.position.set(-6, 2, -3); scene.add(rim);
-      var fill = new THREE.PointLight(0xffffff, 26, 60); fill.position.set(-4, -3, 6); scene.add(fill);
-    }
-    function addDust(scene, n) {
-      var pos = new Float32Array(n * 3);
-      for (var i = 0; i < n; i++) {
-        pos[i * 3] = (Math.random() - 0.5) * 15;
-        pos[i * 3 + 1] = (Math.random() - 0.5) * 6.5;
-        pos[i * 3 + 2] = (Math.random() - 0.5) * 5 - 1;
-      }
-      var geo = new THREE.BufferGeometry();
-      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-      var pts = new THREE.Points(geo, new THREE.PointsMaterial({
-        color: SOFT, size: 0.045, transparent: true, opacity: 0.45, depthWrite: false
-      }));
-      scene.add(pts);
-      return pts;
-    }
-    function gearGeo(teeth, radius, depth, hole) {
-      var shape = new THREE.Shape();
-      var inner = radius * 0.82, step = (Math.PI * 2) / teeth;
-      for (var i = 0; i < teeth; i++) {
-        var a = i * step;
-        var pts = [
-          [Math.cos(a) * inner, Math.sin(a) * inner],
-          [Math.cos(a + step * 0.28) * inner, Math.sin(a + step * 0.28) * inner],
-          [Math.cos(a + step * 0.38) * radius, Math.sin(a + step * 0.38) * radius],
-          [Math.cos(a + step * 0.62) * radius, Math.sin(a + step * 0.62) * radius],
-          [Math.cos(a + step * 0.72) * inner, Math.sin(a + step * 0.72) * inner]
-        ];
-        for (var j = 0; j < pts.length; j++) {
-          if (i === 0 && j === 0) shape.moveTo(pts[j][0], pts[j][1]); else shape.lineTo(pts[j][0], pts[j][1]);
-        }
-      }
-      shape.closePath();
-      if (hole) {
-        var h = new THREE.Path(); h.absarc(0, 0, hole, 0, Math.PI * 2, true); shape.holes.push(h);
-      }
-      return new THREE.ExtrudeGeometry(shape, { depth: depth, bevelEnabled: true, bevelThickness: 0.02, bevelSize: 0.02, bevelSegments: 1 });
-    }
-    function dropletGeo(r) {
-      var pts = [];
-      var prof = [[0, -1.15], [0.42, -1.02], [0.68, -0.72], [0.78, -0.3], [0.7, 0.18], [0.45, 0.62], [0.18, 0.98], [0, 1.2]];
-      for (var i = 0; i < prof.length; i++) pts.push(new THREE.Vector2(prof[i][0] * r, prof[i][1] * r));
-      return new THREE.LatheGeometry(pts, 40);
-    }
-    function pinGeo(r) {
-      var pts = [];
-      var prof = [[0, -1.35], [0.1, -0.95], [0.3, -0.55], [0.62, -0.05], [0.7, 0.35], [0.55, 0.78], [0.25, 1.05], [0, 1.12]];
-      for (var i = 0; i < prof.length; i++) pts.push(new THREE.Vector2(prof[i][0] * r, prof[i][1] * r));
-      return new THREE.LatheGeometry(pts, 36);
-    }
+  var SERVICES = [
+    { name: 'Water Heater Installation', desc: 'Professional installation of high-efficiency tank water heaters — sized for your home, fitted clean, and set up to run right from day one.' },
+    { name: 'Water Heater Repair', desc: 'Fast, honest diagnostics and repair — leaks, no-hot-water calls, strange noises, and failing units, fixed without the upsell.' },
+    { name: 'Tankless Water Heaters', desc: 'Endless hot water and lower energy bills with modern tankless systems — installed, sized, and serviced by a specialist.' },
+    { name: 'Boiler Service', desc: 'Boiler service, maintenance, and repair that keeps your system running safely, quietly, and efficiently all season long.' },
+    { name: 'Solar Water Heating', desc: 'Solar water heating that puts Florida sunshine to work — hot water for your home with a fraction of the energy cost.' }
+  ];
 
-    var builders = {
-      /* 1 — HERO TANK: polished steel tank, copper pipe, pilot flame.
-         Rotation is driven by the manager (drag + slow auto-turn). */
-      tank: function (scene) {
-        var grp = new THREE.Group();
-        var prof = [[0, -1.5], [0.72, -1.44], [0.92, -1.12], [0.96, 0.85], [0.82, 1.32], [0.45, 1.52], [0, 1.56]];
-        var pts = []; for (var i = 0; i < prof.length; i++) pts.push(new THREE.Vector2(prof[i][0], prof[i][1]));
-        grp.add(new THREE.Mesh(new THREE.LatheGeometry(pts, 44), metal(MAT, 0.24)));
-        var band = new THREE.Mesh(new THREE.TorusGeometry(0.965, 0.035, 10, 60), metal(ACC, 0.3));
-        band.rotation.x = Math.PI / 2; band.position.y = 0.55; grp.add(band);
-        var band2 = new THREE.Mesh(new THREE.TorusGeometry(0.94, 0.028, 10, 60), metal(ACC, 0.3));
-        band2.rotation.x = Math.PI / 2; band2.position.y = -0.85; grp.add(band2);
-        var pipe = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.7, 16), metal(ACC, 0.28));
-        pipe.position.y = 1.85; grp.add(pipe);
-        var elbow = new THREE.Mesh(new THREE.TorusGeometry(0.52, 0.1, 12, 24, Math.PI / 2), metal(ACC, 0.28));
-        elbow.position.set(1.35, -0.5, 0); elbow.rotation.z = Math.PI; grp.add(elbow);
-        var side = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 1.1, 14), metal(ACC, 0.28));
-        side.position.set(1.87, -1.05, 0); grp.add(side);
-        var flame = new THREE.Mesh(new THREE.ConeGeometry(0.15, 0.44, 20),
-          new THREE.MeshBasicMaterial({ color: ACC, transparent: true, opacity: 0.9 }));
-        flame.position.set(0, -1.78, 0.55); grp.add(flame);
-        var fl = new THREE.PointLight(ACC, 7, 6); fl.position.copy(flame.position); grp.add(fl);
-        var halo = new THREE.Mesh(new THREE.TorusGeometry(1.7, 0.025, 8, 72), metal(ACC, 0.3));
-        halo.rotation.x = Math.PI / 2.2; grp.add(halo);
-        scene.add(grp);
-        return { group: grp, update: function (t) {
-          flame.scale.y = 1 + Math.sin(t * 0.011) * 0.1 + Math.sin(t * 0.023) * 0.05;
-          fl.intensity = 6.4 + Math.sin(t * 0.017) * 0.9;
-          halo.rotation.z = t * 0.00004;
-        } };
-      },
+  function svcList() {
+    var h = '<p>Here\'s everything we handle:</p><ul>';
+    for (var i = 0; i < SERVICES.length; i++) h += '<li><strong>' + SERVICES[i].name + '</strong> — ' + SERVICES[i].desc + '</li>';
+    return h + '</ul><p>Want one of these taken care of? Matt answers day and night.</p>' + callBtn;
+  }
+  function svcOne(i, extra) {
+    return '<p><strong>' + SERVICES[i].name + '</strong> — ' + SERVICES[i].desc + '</p>' +
+      (extra ? '<p>' + extra + '</p>' : '') +
+      '<p>The fastest way to get it scheduled is a quick call:</p>' + callBtn;
+  }
 
-      /* 2 — INSTALLATION: pipe cross with a brass valve wheel */
-      valve: function (scene) {
-        var grp = new THREE.Group();
-        var pipe = new THREE.Mesh(new THREE.CylinderGeometry(0.21, 0.21, 3.4, 20), metal(MAT, 0.22));
-        pipe.rotation.z = Math.PI / 2; grp.add(pipe);
-        var riser = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.85, 14), metal(MAT, 0.22));
-        riser.position.y = 0.55; grp.add(riser);
-        var wheel = new THREE.Group();
-        wheel.add(new THREE.Mesh(new THREE.TorusGeometry(0.56, 0.06, 12, 48), metal(ACC, 0.24)));
-        for (var i = 0; i < 4; i++) {
-          var spoke = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 1.04, 8), metal(ACC, 0.24));
-          spoke.rotation.z = i * Math.PI / 4; wheel.add(spoke);
-        }
-        wheel.add(new THREE.Mesh(new THREE.SphereGeometry(0.13, 16, 12), metal(ACC, 0.22)));
-        wheel.position.y = 1.12; wheel.rotation.x = Math.PI / 2;
-        grp.add(wheel);
-        scene.add(grp);
-        return { group: grp, update: function (t) {
-          wheel.rotation.z = t * 0.00005;
-          grp.rotation.y = Math.sin(t * 0.00006) * 0.35;
-        } };
-      },
+  var ANSWERS = {
+    emergency: '<p><strong>Let\'s get you sorted fast.</strong> If your heater is leaking or you\'ve got no hot water:</p>' +
+      '<ul><li><strong>1.</strong> Turn off the water at the cold-water shut-off valve on top of the heater (or your home\'s main shut-off).</li>' +
+      '<li><strong>2.</strong> Cut the power at the breaker — or close the gas valve if it\'s a gas unit.</li>' +
+      '<li><strong>3.</strong> Keep the area clear and mop up standing water if it\'s safe.</li></ul>' +
+      '<p>Then call Matt right away — we\'re open 24 hours, 7 days a week, and no-hot-water calls are what we do.</p>' + callBtn,
+    quote: '<p>Happy to help with a quote. Honest answer: exact pricing depends on the unit and the install, so Matt gives precise quotes himself — no guessing, no surprises, and no pressure.</p>' +
+      '<p>It takes two minutes on the phone:</p>' + callBtn,
+    hours: '<p>We\'re <strong>open 24 hours, 7 days a week</strong> — nights, weekends, and holidays included. Hot water problems don\'t keep office hours, so neither do we.</p>' + callBtn,
+    address: '<p>We\'re based at <strong>7149 Wooded Village Ln, Orlando, FL 32835</strong> and serve homes across the Orlando area — Matt comes to you, so there\'s no shop to visit.</p>' +
+      '<p>Ready when you are:</p>' + callBtn,
+    reviews: '<p>Homeowners rate us <strong>5.0 stars across 79 Google reviews</strong>. Here\'s a recent favorite, from Tanya:</p>' +
+      '<p><em>"Matt replaced and installed our water heater. Called around but others wanted too much or try to sell me expensive replacements. He is the best and answered all my questions. Honest, dependable and trustworthy fair priced service. Definitely hire him!"</em></p>' +
+      '<p>Want that same experience? One call:</p>' + callBtn,
+    call: '<p>You got it — Matt answers day and night, and there\'s no call center in between. Tap below:</p>' + callBtn,
+    booking: '<p>Easy — scheduling happens right over the phone so Matt can ask the right questions and bring the right parts the first time. We\'re open 24/7:</p>' + callBtn,
+    greeting: '<p>Hey there! Good to meet you. I can walk you through our services, hours, or quotes — or if your hot water is out, tap <strong>"No hot water — help!"</strong> below and I\'ll get you moving.</p><p>Fastest path is always a quick call to Matt:</p>' + callBtn,
+    thanks: '<p>Anytime — that\'s what we\'re here for. If anything else comes up with your hot water, you know where to find us, day or night.</p>' + callBtn,
+    fallback: '<p>Good question — that one\'s best answered by Matt directly so you get the exact right info for your home. He\'s friendly, straight with answers, and there\'s never any pressure.</p>' + callBtn
+  };
 
-      /* 3 — REPAIR: meshing gear pair, counter-rotating */
-      gearpair: function (scene) {
-        var grp = new THREE.Group();
-        var g1 = new THREE.Mesh(gearGeo(11, 1.05, 0.3, 0.3), metal(MAT, 0.24));
-        g1.position.set(-1.02, 0.18, -0.15); grp.add(g1);
-        var g2 = new THREE.Mesh(gearGeo(8, 0.76, 0.3, 0.24), metal(ACC, 0.27));
-        g2.position.set(0.98, -0.28, -0.15); g2.rotation.z = 0.2; grp.add(g2);
-        scene.add(grp);
-        return { group: grp, update: function (t) {
-          g1.rotation.z = t * 0.00007;
-          g2.rotation.z = 0.2 - t * 0.000096;
-          grp.rotation.y = Math.sin(t * 0.00005) * 0.25;
-        } };
-      },
+  function has(t, words) { for (var i = 0; i < words.length; i++) { if (t.indexOf(words[i]) > -1) return true; } return false; }
 
-      /* 4 — TANKLESS: glass prism crystal with a slender beam */
-      prism: function (scene) {
-        var grp = new THREE.Group();
-        var crys = new THREE.Mesh(new THREE.OctahedronGeometry(1.12, 0), glass(SOFT, 0.5));
-        crys.scale.set(1, 1.85, 1); grp.add(crys);
-        var edges = new THREE.LineSegments(
-          new THREE.EdgesGeometry(new THREE.OctahedronGeometry(1.13, 0)),
-          new THREE.LineBasicMaterial({ color: ACC, transparent: true, opacity: 0.85 })
-        );
-        edges.scale.copy(crys.scale); grp.add(edges);
-        var beam = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 8.5, 8), glow(ACC, 0.32));
-        beam.rotation.z = 1.15; beam.position.set(-0.6, 0.4, -0.8); grp.add(beam);
-        var beam2 = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 8.5, 8), glow(SOFT, 0.22));
-        beam2.rotation.z = 1.02; beam2.position.set(0.9, -0.2, -0.9); grp.add(beam2);
-        scene.add(grp);
-        return { group: grp, update: function (t) {
-          crys.rotation.y = t * 0.00007; edges.rotation.y = t * 0.00007;
-          grp.position.y = Math.sin(t * 0.00045) * 0.07;
-        } };
-      },
+  function answer(raw) {
+    var t = ' ' + raw.toLowerCase().replace(/[^a-z0-9 ]/g, ' ') + ' ';
+    if (has(t, [' no hot water ', ' not heating ', ' cold shower ', ' leak', ' flooding ', ' flooded ', ' burst ', ' emergency ', ' help ', ' shut off ', ' shutoff ', ' water everywhere '])) return ANSWERS.emergency;
+    if (has(t, [' quote ', ' price ', ' cost ', ' how much ', ' estimate ', ' charge '])) return ANSWERS.quote;
+    if (has(t, [' tankless '])) return svcOne(2, 'Tankless is a great upgrade if you\'re tired of running out mid-shower.');
+    if (has(t, [' boiler '])) return svcOne(3);
+    if (has(t, [' solar '])) return svcOne(4);
+    if (has(t, [' install', ' replace', ' replacement ', ' new heater ', ' new water heater ', ' upgrade '])) return svcOne(0);
+    if (has(t, [' repair ', ' fix ', ' broken ', ' not working ', ' noise ', ' strange sound ', ' pilot '])) return svcOne(1);
+    if (has(t, [' service ', ' services ', ' offer ', ' do you do ', ' what do you '])) return svcList();
+    if (has(t, [' hour ', ' hours ', ' open ', ' when ', ' weekend ', ' sunday ', ' saturday ', ' 24 '])) return ANSWERS.hours;
+    if (has(t, [' address ', ' located ', ' location ', ' where ', ' area ', ' near me ', ' come to '])) return ANSWERS.address;
+    if (has(t, [' review ', ' rating ', ' stars ', ' good ', ' trust ', ' reputation '])) return ANSWERS.reviews;
+    if (has(t, [' call ', ' phone ', ' number ', ' matt ', ' talk ', ' speak '])) return ANSWERS.call;
+    if (has(t, [' appointment ', ' schedule ', ' book ', ' come out ', ' visit '])) return ANSWERS.booking;
+    if (has(t, [' thank ', ' thanks ', ' great ', ' awesome '])) return ANSWERS.thanks;
+    if (has(t, [' hello ', ' hi ', ' hey ', ' yo '])) return ANSWERS.greeting;
+    return ANSWERS.fallback;
+  }
 
-      /* 5 — BOILER: compressor piston in an open housing, eased stroke */
-      piston: function (scene) {
-        var grp = new THREE.Group();
-        var ringT = new THREE.Mesh(new THREE.TorusGeometry(1.05, 0.09, 12, 56), metal(MAT, 0.22));
-        ringT.rotation.x = Math.PI / 2; ringT.position.y = 1.15; grp.add(ringT);
-        var ringB = ringT.clone(); ringB.position.y = -1.15; grp.add(ringB);
-        for (var i = 0; i < 3; i++) {
-          var rod = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 2.3, 10), metal(MAT, 0.25));
-          var a = i * Math.PI * 2 / 3;
-          rod.position.set(Math.cos(a) * 1.05, 0, Math.sin(a) * 1.05); grp.add(rod);
-        }
-        var moving = new THREE.Group();
-        moving.add(new THREE.Mesh(new THREE.CylinderGeometry(0.82, 0.82, 0.72, 36), metal(ACC, 0.26)));
-        var shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 1.15, 14), metal(MAT, 0.2));
-        shaft.position.y = 0.9; moving.add(shaft);
-        grp.add(moving);
-        scene.add(grp);
-        return { group: grp, update: function (t) {
-          moving.position.y = Math.sin(t * 0.00055) * 0.3;
-          grp.rotation.y = Math.sin(t * 0.00006) * 0.35;
-        } };
-      },
+  var fab = document.getElementById('chatFab');
+  var panel = document.getElementById('chatPanel');
+  var msgs = document.getElementById('chatMsgs');
+  var form = document.getElementById('chatForm');
+  var input = document.getElementById('chatInput');
+  var greeted = false;
 
-      /* 6 — SOLAR: three glass orbs in quiet orbit (sun + collectors) */
-      orbs: function (scene) {
-        var grp = new THREE.Group();
-        var defs = [[0.58, 0, 0], [0.4, 1.35, 0.35], [0.3, -1.3, -0.3]];
-        var os = [];
-        for (var i = 0; i < defs.length; i++) {
-          var o = new THREE.Mesh(new THREE.SphereGeometry(defs[i][0], 36, 24), glass(i === 0 ? SOFT : ACC, i === 0 ? 0.5 : 0.4));
-          o.position.set(defs[i][1], defs[i][2], 0); grp.add(o); os.push(o);
-        }
-        var ring = new THREE.Mesh(new THREE.TorusGeometry(1.7, 0.025, 8, 72), metal(ACC, 0.3));
-        ring.rotation.x = Math.PI / 2.3; grp.add(ring);
-        scene.add(grp);
-        return { group: grp, update: function (t) {
-          for (var i = 0; i < os.length; i++) os[i].position.y = defs[i][2] + Math.sin(t * 0.0005 + i * 1.7) * 0.09;
-          ring.rotation.z = t * 0.00004;
-          grp.rotation.y = Math.sin(t * 0.00006) * 0.35;
-        } };
-      },
-
-      /* 7 — ABOUT: steel + copper pipe run with elbow and flanges */
-      pipes: function (scene) {
-        var grp = new THREE.Group();
-        function hPipe(y, mat) {
-          var p = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 3.6, 20), mat);
-          p.rotation.z = Math.PI / 2; p.position.y = y; grp.add(p);
-          var f = new THREE.Mesh(new THREE.TorusGeometry(0.24, 0.055, 10, 28), mat);
-          f.rotation.y = Math.PI / 2; f.position.set(-1.8, y, 0); grp.add(f);
-        }
-        hPipe(0.48, metal(MAT, 0.22)); hPipe(-0.48, metal(ACC, 0.26));
-        var elbow = new THREE.Mesh(new THREE.TorusGeometry(0.48, 0.17, 14, 28, Math.PI / 2), metal(MAT, 0.22));
-        elbow.position.set(1.8, 0, 0); elbow.rotation.z = Math.PI; grp.add(elbow);
-        scene.add(grp);
-        return { group: grp, update: function (t) {
-          grp.rotation.y = Math.sin(t * 0.00006) * 0.4;
-          grp.rotation.x = Math.sin(t * 0.00005) * 0.08;
-        } };
-      },
-
-      /* 8 — REVIEWS: glass droplet, slow bob */
-      droplet: function (scene) {
-        var grp = new THREE.Group();
-        grp.add(new THREE.Mesh(dropletGeo(1.05), glass(SOFT, 0.55)));
-        var core = new THREE.Mesh(dropletGeo(0.55), metal(ACC, 0.25));
-        core.position.y = -0.12; grp.add(core);
-        var ring = new THREE.Mesh(new THREE.TorusGeometry(1.35, 0.03, 10, 72), metal(MAT, 0.25));
-        ring.rotation.x = Math.PI / 2.15; grp.add(ring);
-        scene.add(grp);
-        return { group: grp, update: function (t) {
-          grp.rotation.y = t * 0.00009;
-          ring.rotation.z = t * 0.00005;
-        } };
-      },
-
-      /* 9 — VISIT: 3D location pin over a fine ground ring */
-      pin: function (scene) {
-        var grp = new THREE.Group();
-        var pin = new THREE.Mesh(pinGeo(1.05), metal(ACC, 0.2));
-        pin.position.y = 0.25; grp.add(pin);
-        var hole = new THREE.Mesh(new THREE.SphereGeometry(0.3, 18, 14), satin(0x14100c, 0.5));
-        hole.position.y = 0.62; grp.add(hole);
-        var ring = new THREE.Mesh(new THREE.TorusGeometry(0.85, 0.035, 8, 56), metal(MAT, 0.25));
-        ring.rotation.x = Math.PI / 2; ring.position.y = -1.2; grp.add(ring);
-        scene.add(grp);
-        return { group: grp, update: function (t) {
-          var bob = Math.sin(t * 0.00055) * 0.09;
-          pin.position.y = 0.25 + bob;
-          hole.position.y = 0.62 + bob;
-          var s = 1 + Math.sin(t * 0.00055 + 1.2) * 0.05; ring.scale.set(s, s, 1);
-          grp.rotation.y = Math.sin(t * 0.00006) * 0.3;
-        } };
-      }
-    };
-
-    /* ---------- shared manager ---------- */
-    var MAX_CONTEXTS = 9;
-    var entries = [];
-    var canvases = document.querySelectorAll('canvas.d3d');
-    for (var ci = 0; ci < canvases.length; ci++) {
-      entries.push({
-        canvas: canvases[ci], key: canvases[ci].getAttribute('data-scene'),
-        hero: canvases[ci].className.indexOf('hero3d') > -1,
-        drag: canvases[ci].getAttribute('data-drag') === '1',
-        inited: false, running: false, renderer: null, scene: null, camera: null,
-        built: null, dust: null, lastSeen: 0, phase: ci * 1.7,
-        rotY: 0.6, rotX: 0, velY: 0, dragging: false, lastPX: 0, lastPY: 0
-      });
+  function scrollDown() { msgs.scrollTop = msgs.scrollHeight; }
+  function addMsg(cls, html) {
+    var d = document.createElement('div');
+    d.className = 'msg ' + cls;
+    d.innerHTML = html;
+    msgs.appendChild(d);
+    scrollDown();
+    return d;
+  }
+  function botReply(html) {
+    var t = addMsg('bot typing', '<span></span><span></span><span></span>');
+    setTimeout(function () {
+      t.classList.remove('typing');
+      t.innerHTML = html;
+      scrollDown();
+    }, 550);
+  }
+  function send(text) {
+    var clean = (text || '').trim();
+    if (!clean) return;
+    addMsg('user', clean.replace(/</g, '&lt;'));
+    botReply(answer(clean));
+  }
+  function openChat() {
+    panel.classList.add('open');
+    if (!greeted) {
+      greeted = true;
+      botReply('<p>Hi there — welcome to <strong>Orlando Water Heater Pros</strong>! I\'m the team\'s assistant. Ask me about our services, hours, or quotes — and if your hot water is out right now, I\'ll point you straight to help. We\'re open 24/7.</p>');
     }
-    if (!entries.length) return;
+    setTimeout(function () { input.focus(); }, 80);
+  }
+  function closeChat() { panel.classList.remove('open'); }
 
-    function layoutEntry(e) {
-      if (!e.inited) return;
-      var w = e.canvas.clientWidth, h = e.canvas.clientHeight;
-      if (!w || !h) return;
-      e.renderer.setSize(w, h, false);
-      e.camera.aspect = w / h;
-      /* wide, short bands: move closer so the model fills the frame */
-      var baseZ = e.hero ? 8.6 : 8.2;
-      var f = e.camera.aspect > 1.6 ? Math.max(0.55, 1.6 / e.camera.aspect) : 1;
-      e.camera.position.z = baseZ * f;
-      e.camera.updateProjectionMatrix();
-    }
-    function disposeEntry(e) {
-      if (!e.inited) return;
-      try { e.renderer.dispose(); } catch (err) {}
-      e.inited = false; e.running = false; e.renderer = null; e.scene = null; e.built = null; e.dust = null;
-    }
-    function enforceCap(newEntry) {
-      var inited = [];
-      for (var i = 0; i < entries.length; i++) {
-        if (entries[i].inited && entries[i] !== newEntry) inited.push(entries[i]);
-      }
-      while (inited.length >= MAX_CONTEXTS) {
-        var oldest = null;
-        for (var j = 0; j < inited.length; j++) {
-          if (!inited[j].running && (!oldest || inited[j].lastSeen < oldest.lastSeen)) oldest = inited[j];
-        }
-        if (!oldest) oldest = inited[0];
-        disposeEntry(oldest);
-        inited.splice(inited.indexOf(oldest), 1);
-      }
-    }
-    function initEntry(e) {
-      var builder = builders[e.key];
-      if (!builder) return;
-      enforceCap(e);
-      var renderer = new THREE.WebGLRenderer({ canvas: e.canvas, alpha: true, antialias: true });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, e.hero ? 1.75 : 1.5));
-      var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
-      camera.position.set(0, 0, e.hero ? 8.6 : 8.2);
-      addLights(scene);
-      e.built = builder(scene);
-      e.dust = addDust(scene, e.hero ? 52 : 32);
-      e.renderer = renderer; e.scene = scene; e.camera = camera; e.inited = true;
-      layoutEntry(e);
-      if (reduced) { applyDrag(e); renderer.render(scene, camera); }
-    }
-    function applyDrag(e) {
-      if (e.drag && e.built) {
-        e.built.group.rotation.y = e.rotY;
-        e.built.group.rotation.x = e.rotX;
-      }
-    }
-
-    /* drag-to-rotate on the hero canvas */
-    for (var di = 0; di < entries.length; di++) {
-      (function (e) {
-        if (!e.drag) return;
-        var cv = e.canvas;
-        cv.addEventListener('pointerdown', function (ev) {
-          e.dragging = true; e.lastPX = ev.clientX; e.lastPY = ev.clientY; e.velY = 0;
-          try { cv.setPointerCapture(ev.pointerId); } catch (err) {}
-        });
-        cv.addEventListener('pointermove', function (ev) {
-          if (!e.dragging) return;
-          var dx = ev.clientX - e.lastPX, dy = ev.clientY - e.lastPY;
-          e.lastPX = ev.clientX; e.lastPY = ev.clientY;
-          e.rotY += dx * 0.008; e.velY = dx * 0.008;
-          e.rotX += dy * 0.004;
-          if (e.rotX > 0.45) e.rotX = 0.45;
-          if (e.rotX < -0.45) e.rotX = -0.45;
-          if (reduced) { applyDrag(e); if (e.inited) e.renderer.render(e.scene, e.camera); }
-        });
-        function endDrag() { e.dragging = false; }
-        cv.addEventListener('pointerup', endDrag);
-        cv.addEventListener('pointercancel', endDrag);
-      })(entries[di]);
-    }
-
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (obs) {
-        for (var i = 0; i < obs.length; i++) {
-          var en = obs[i], e = null;
-          for (var j = 0; j < entries.length; j++) { if (entries[j].canvas === en.target) { e = entries[j]; break; } }
-          if (!e) continue;
-          if (en.isIntersecting) {
-            e.lastSeen = Date.now();
-            if (!e.inited) initEntry(e);
-            e.running = true;
-            if (reduced && e.inited) { applyDrag(e); e.renderer.render(e.scene, e.camera); }
-          } else { e.running = false; }
-        }
-      }, { rootMargin: '320px 0px', threshold: 0.01 });
-      for (var oi = 0; oi < entries.length; oi++) io.observe(entries[oi].canvas);
-    } else {
-      for (var fi = 0; fi < entries.length; fi++) { initEntry(entries[fi]); entries[fi].running = true; }
-    }
-
-    var mx = 0, my = 0, tx = 0, ty = 0;
-    window.addEventListener('pointermove', function (ev) {
-      tx = (ev.clientX / window.innerWidth - 0.5) * 2;
-      ty = (ev.clientY / window.innerHeight - 0.5) * 2;
-    }, { passive: true });
-    window.addEventListener('resize', function () {
-      for (var i = 0; i < entries.length; i++) layoutEntry(entries[i]);
-    });
-    document.addEventListener('visibilitychange', function () {
-      if (!document.hidden) { for (var i = 0; i < entries.length; i++) layoutEntry(entries[i]); }
-    });
-
-    function loop(t) {
-      requestAnimationFrame(loop);
-      if (document.hidden) return;
-      mx += (tx - mx) * 0.025; my += (ty - my) * 0.025;
-      for (var i = 0; i < entries.length; i++) {
-        var e = entries[i];
-        if (!e.inited || !e.running) continue;
-        if (!e.canvas.clientWidth) continue;
-        e.built.update(t);
-        if (e.drag) {
-          if (!e.dragging) {
-            e.rotY += 0.0016 + e.velY;      /* slow auto-turn + leftover inertia */
-            e.velY *= 0.94;
-            e.rotX += (0 - e.rotX) * 0.02;  /* ease tilt back to level */
-          }
-          applyDrag(e);
-        }
-        var gx = e.hero && e.camera.aspect > 1.05 ? 1.55 : 0;
-        e.built.group.position.x = gx;
-        if (e.key !== 'prism') e.built.group.position.y = Math.sin(t * 0.00042 + e.phase) * 0.07;
-        if (e.dust) e.dust.rotation.y = t * 0.000008;
-        e.camera.position.x = mx * (e.hero ? 0.4 : 0.3);
-        e.camera.position.y = -my * 0.24;
-        e.camera.lookAt(gx * 0.55, 0, 0);
-        e.renderer.render(e.scene, e.camera);
-      }
-    }
-    if (!reduced) requestAnimationFrame(loop);
-  } catch (e) { /* 3D is decorative only — fail silent */ }
+  fab.addEventListener('click', function () { panel.classList.contains('open') ? closeChat() : openChat(); });
+  document.getElementById('chatClose').addEventListener('click', closeChat);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeChat(); });
+  form.addEventListener('submit', function (e) { e.preventDefault(); send(input.value); input.value = ''; });
+  var chips = document.querySelectorAll('#chatChips .chip');
+  for (var i = 0; i < chips.length; i++) {
+    chips[i].addEventListener('click', function () { send(this.getAttribute('data-q')); });
+  }
 })();
 </script>
 </body>
