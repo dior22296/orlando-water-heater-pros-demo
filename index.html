@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orlando Water Heater Pros — Plumber in Orlando, FL</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family: Georgia, 'Times New Roman', serif; background:#f4f7fa; color:#1d2733; }
+  .topbar { position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:12px 18px; background:#0f3057; color:#fff; box-shadow:0 2px 14px rgba(6,20,36,.35); }
+  .brand { font-size:19px; font-weight:bold; letter-spacing:.4px; }
+  .callbtn { display:flex; align-items:center; gap:7px; background:#f08c21; color:#fff; text-decoration:none; padding:9px 14px; border-radius:999px; font-family:Arial,sans-serif; font-size:14px; font-weight:bold; }
+  .callbtn svg { width:16px; height:16px; }
+  nav.icons { display:flex; justify-content:space-around; background:#0f3057; padding:4px 8px 12px; position:sticky; top:53px; z-index:19; }
+  nav.icons a { color:#fff; text-decoration:none; font-family:Arial,sans-serif; font-size:11px; text-align:center; opacity:.92; }
+  nav.icons svg { width:23px; height:23px; display:block; margin:0 auto 3px; }
+
+  /* ---------- HERO ---------- */
+  .hero { position:relative; overflow:hidden; color:#fff; text-align:center;
+    background:#0b2440 url('assets/gen-hero-backdrop.jpg') center/cover no-repeat; }
+  .hero::before { content:''; position:absolute; inset:0; background:linear-gradient(165deg, rgba(9,28,50,.88), rgba(15,48,87,.72) 55%, rgba(23,80,126,.66)); z-index:0; }
+  .hero3d { position:absolute; top:0; right:0; width:46%; height:100%; display:block; z-index:1; cursor:grab; touch-action:pan-y; }
+  .hero3d:active { cursor:grabbing; }
+  .hero-in { position:relative; z-index:2; max-width:860px; margin:0 auto; padding:34px 22px 40px; }
+  .herorev { max-width:640px; margin:0 auto 26px; background:rgba(8,18,30,.45); border:1px solid rgba(255,255,255,.35);
+    border-radius:16px; padding:18px 22px; backdrop-filter:blur(3px); }
+  .hr-stars { color:#ffd34d; letter-spacing:3px; font-size:15px; margin-bottom:8px; }
+  .hr-text { font-style:italic; font-size:16.5px; line-height:1.55; }
+  .hr-name { font-family:Arial,sans-serif; font-size:12.5px; opacity:.85; margin-top:9px; }
+  .hero h1 { font-size:34px; line-height:1.15; margin-bottom:10px; text-shadow:0 2px 18px rgba(0,0,0,.45); }
+  .hero .tag { font-family:Arial,sans-serif; font-size:15px; opacity:.94; margin-bottom:16px; }
+  .ratepill { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); padding:8px 16px; border-radius:999px; font-family:Arial,sans-serif; font-size:14px; }
+  .ratepill .st { color:#ffd34d; letter-spacing:2px; }
+  .draghint { font-family:Arial,sans-serif; font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.75; margin-top:18px; }
+  @media (max-width:760px){ .hero3d{ width:100%; opacity:.5; } }
+
+  section { padding:34px 22px; max-width:920px; margin:0 auto; }
+  h2 { font-size:24px; margin-bottom:8px; text-align:center; color:#0f3057; }
+  .sub { text-align:center; font-family:Arial,sans-serif; font-size:14px; opacity:.75; margin-bottom:20px; }
+  .sec3d { height:180px; position:relative; overflow:hidden; background:linear-gradient(165deg,#0f3057,#17507e); }
+  .sec3d canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+
+  /* ---------- SERVICES ---------- */
+  .svcgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+  .svc { background:#ffffff; border:1px solid #d9e2ec; border-radius:16px; overflow:hidden; box-shadow:0 4px 18px rgba(15,48,87,.06); }
+  .svc .svc3d { height:150px; position:relative; background:linear-gradient(160deg,#123f6e,#1b5a94); }
+  .svc .svc3d canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+  .svc-body { padding:18px 16px 20px; text-align:center; }
+  .svc-ic { width:44px; height:44px; margin:-40px auto 10px; position:relative; z-index:2; border-radius:50%; background:#f08c21; color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px rgba(240,140,33,.4); border:3px solid #fff; }
+  .svc-ic svg { width:23px; height:23px; }
+  .svc h3 { font-size:17px; font-weight:normal; margin-bottom:7px; color:#0f3057; }
+  .svc p { font-family:Arial,sans-serif; font-size:13.5px; line-height:1.55; opacity:.82; }
+
+  /* ---------- ABOUT / GALLERY ---------- */
+  .aboutgrid { display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:stretch; }
+  @media (max-width:700px){ .aboutgrid{ grid-template-columns:1fr; } }
+  .aboutgrid img { width:100%; height:100%; min-height:230px; object-fit:cover; border-radius:16px; display:block; box-shadow:0 6px 22px rgba(15,48,87,.14); }
+  .aboutgrid img.side { height:262px; min-height:0; margin-bottom:14px; }
+  .abouttxt { font-size:16.5px; line-height:1.65; }
+  .abouttxt p + p { margin-top:12px; }
+  .galgrid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-top:18px; }
+  .gal { position:relative; border-radius:14px; overflow:hidden; box-shadow:0 4px 16px rgba(15,48,87,.12); }
+  .gal img { width:100%; height:170px; object-fit:cover; display:block; }
+  .gal span { position:absolute; left:0; right:0; bottom:0; padding:20px 12px 9px; color:#fff; font-family:Arial,sans-serif; font-size:12.5px; font-weight:bold; letter-spacing:.03em; background:linear-gradient(transparent, rgba(6,20,36,.82)); }
+
+  /* ---------- REVIEWS ---------- */
+  .review { text-align:center; background:#ffffff; border-top:1px solid #d9e2ec; border-bottom:1px solid #d9e2ec; max-width:none; }
+  .review .inner { max-width:860px; margin:0 auto; }
+  .qmark { font-size:54px; color:#f08c21; line-height:.6; margin-bottom:12px; }
+  .rstars { color:#e8a812; font-size:21px; letter-spacing:3px; margin-bottom:12px; }
+  .rtext { font-size:19px; font-style:italic; line-height:1.55; max-width:760px; margin:0 auto; }
+  .rname { font-family:Arial,sans-serif; font-size:13px; margin-top:14px; opacity:.75; }
+
+  /* ---------- VISIT ---------- */
+  .hrow { display:flex; justify-content:space-between; font-family:Arial,sans-serif; font-size:14px; padding:7px 2px; border-bottom:1px dashed #d9e2ec; }
+  .contact { text-align:center; }
+  .contact .addr { font-family:Arial,sans-serif; font-size:15px; margin-bottom:8px; }
+  .bigcall { display:inline-flex; align-items:center; gap:9px; background:#f08c21; color:#fff; text-decoration:none; padding:15px 30px; border-radius:999px; font-family:Arial,sans-serif; font-size:18px; font-weight:bold; margin-top:14px; box-shadow:0 6px 18px rgba(240,140,33,.35); }
+  .bigcall svg { width:20px; height:20px; }
+  .ctaband { position:relative; overflow:hidden; text-align:center; color:#fff; padding:44px 22px;
+    background:#0b2440 url('assets/gen-copper-macro.jpg') center/cover no-repeat; }
+  .ctaband::before { content:''; position:absolute; inset:0; background:rgba(8,24,44,.72); }
+  .ctaband > * { position:relative; z-index:1; }
+  .ctaband h2 { color:#fff; }
+  .ctaband p { font-family:Arial,sans-serif; font-size:15px; opacity:.92; }
+  footer { text-align:center; padding:22px; font-family:Arial,sans-serif; font-size:12px; opacity:.95; background:#0f3057; color:#fff; }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} .sec3d,.hero3d,.svc3d{opacity:.92} }
+</style>
+</head>
+<body>
+  <div class="topbar"><div class="brand">Orlando Water Heater Pros</div><a class="callbtn" href="tel:+14077106272"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg> (407) 710-6272</a></div>
+  <nav class="icons">
+    <a href="#top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a>
+    <a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Services</a>
+    <a href="#about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>About</a>
+    <a href="#reviews"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>Reviews</a>
+    <a href="#visit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Visit</a>
+  </nav>
+
+  <!-- HERO — scene 1: drag-rotatable tank; Tanya's review at the top -->
+  <div class="hero" id="top">
+    <canvas class="d3d hero3d" data-scene="tank" data-drag="1" aria-hidden="true"></canvas>
+    <div class="hero-in">
+      <div class="herorev"><div class="hr-stars">★★★★★</div><p class="hr-text">Matt replaced and installed our water heater. Called around but others wanted too much or try to sell me expensive replacements. He is the best and answered all my questions. Honest, dependable and trustworthy fair priced service. Definitely hire him! Local hard working business man. Thank You.</p><p class="hr-name">— Tanya, Google review</p></div>
+      <h1>Orlando Water Heater Pros</h1>
+      <p class="tag">Water heater repair &amp; installation — Orlando, FL</p>
+      <div class="ratepill"><span class="st">★★★★★</span> 5 · 79 Google reviews</div>
+      <p class="draghint">Drag the tank to take a look</p>
+    </div>
+  </div>
+
+  <!-- SERVICES — scenes 2–6, one 3D model per service -->
+  <section id="services">
+    <h2>Services</h2>
+    <p class="sub">Five specialties — one call, handled start to finish.</p>
+    <div class="svcgrid">
+      <div class="svc">
+        <div class="svc3d" aria-hidden="true"><canvas class="d3d" data-scene="valve"></canvas></div>
+        <div class="svc-body">
+          <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a4.5 4.5 0 0 0-6 6L3 18l3 3 5.7-5.7a4.5 4.5 0 0 0 6-6L14 13l-3-3 3.7-3.7z"/></svg></div>
+          <h3>Water Heater Installation</h3>
+          <p>Professional installation of high-efficiency tank water heaters — sized for your home, fitted clean, and set up to run right from day one.</p>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc3d" aria-hidden="true"><canvas class="d3d" data-scene="gearpair"></canvas></div>
+        <div class="svc-body">
+          <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M18.5 5.5l-2.1 2.1M7.6 16.4l-2.1 2.1"/></svg></div>
+          <h3>Water Heater Repair</h3>
+          <p>Fast, honest diagnostics and repair — leaks, no-hot-water calls, strange noises, and failing units, fixed without the upsell.</p>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc3d" aria-hidden="true"><canvas class="d3d" data-scene="prism"></canvas></div>
+        <div class="svc-body">
+          <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg></div>
+          <h3>Tankless Water Heaters</h3>
+          <p>Endless hot water and lower energy bills with modern tankless systems — installed, sized, and serviced by a specialist.</p>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc3d" aria-hidden="true"><canvas class="d3d" data-scene="piston"></canvas></div>
+        <div class="svc-body">
+          <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+          <h3>Boiler Service</h3>
+          <p>Boiler service, maintenance, and repair that keeps your system running safely, quietly, and efficiently all season long.</p>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc3d" aria-hidden="true"><canvas class="d3d" data-scene="orbs"></canvas></div>
+        <div class="svc-body">
+          <div class="svc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-9 0 12-5 16-9 16z"/><path d="M4 21c4-6 8-9 12-11"/></svg></div>
+          <h3>Solar Water Heating</h3>
+          <p>Solar water heating that puts Florida sunshine to work — hot water for your home with a fraction of the energy cost.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT — scene 7: pipe run -->
+  <div class="sec3d" aria-hidden="true"><canvas class="d3d" data-scene="pipes"></canvas></div>
+  <section id="about">
+    <h2>About Orlando Water Heater Pros</h2>
+    <p class="sub">A local, hard-working Orlando business — honest answers, fair prices.</p>
+    <div class="aboutgrid">
+      <img src="assets/original-photo.jpg" alt="Orlando Water Heater Pros — photo from their Google listing" loading="lazy">
+      <div>
+        <img class="side" src="assets/gen-about-install.jpg" alt="Technician installing a modern water heater" loading="lazy">
+        <div class="abouttxt">
+          <p>Orlando Water Heater Pros is built on a simple promise: honest, dependable, trustworthy service at a fair price. When your hot water goes out, you get straight answers — never pressure to buy an expensive replacement you don't need.</p>
+          <p>From same-day repairs to full installations, tankless upgrades, boiler service, and solar water heating, every job gets the same care: done right, explained clearly, and priced fairly.</p>
+        </div>
+      </div>
+    </div>
+    <div class="galgrid">
+      <div class="gal"><img src="assets/gen-tankless.jpg" alt="Modern tankless water heater" loading="lazy"><span>Tankless Water Heaters</span></div>
+      <div class="gal"><img src="assets/gen-boiler.jpg" alt="Modern boiler installation" loading="lazy"><span>Boiler Service</span></div>
+      <div class="gal"><img src="assets/gen-solar.jpg" alt="Rooftop solar water heating panels" loading="lazy"><span>Solar Water Heating</span></div>
+    </div>
+  </section>
+
+  <!-- REVIEWS — scene 8: glass droplet -->
+  <div class="sec3d" aria-hidden="true"><canvas class="d3d" data-scene="droplet"></canvas></div>
+  <section class="review" id="reviews">
+    <div class="inner">
+      <div class="qmark">&ldquo;</div>
+      <div class="rstars">★★★★★</div>
+      <p class="rtext">Matt replaced and installed our water heater. Called around but others wanted too much or try to sell me expensive replacements. He is the best and answered all my questions. Honest, dependable and trustworthy fair priced service. Definitely hire him! Local hard working business man. Thank You.</p>
+      <p class="rname">— Tanya, Google review</p>
+    </div>
+  </section>
+
+  <!-- VISIT — scene 9: location pin -->
+  <div class="sec3d" aria-hidden="true"><canvas class="d3d" data-scene="pin"></canvas></div>
+  <section id="visit" class="contact">
+    <h2>Visit or Call</h2>
+    <p class="addr">7149 Wooded Village Ln, Orlando, FL 32835</p>
+    <div style="max-width:420px;margin:14px auto;text-align:left">
+      <div class="hrow"><span>Monday</span><span>Open 24 hours</span></div>
+      <div class="hrow"><span>Tuesday</span><span>Open 24 hours</span></div>
+      <div class="hrow"><span>Wednesday</span><span>Open 24 hours</span></div>
+      <div class="hrow"><span>Thursday</span><span>Open 24 hours</span></div>
+      <div class="hrow"><span>Friday</span><span>Open 24 hours</span></div>
+      <div class="hrow"><span>Saturday</span><span>Open 24 hours</span></div>
+      <div class="hrow"><span>Sunday</span><span>Open 24 hours</span></div>
+    </div>
+    <a class="bigcall" href="tel:+14077106272"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg> Call (407) 710-6272</a>
+  </section>
+
+  <div class="ctaband">
+    <h2>No hot water? We're on it — day or night.</h2>
+    <p>Open 24 hours, 7 days a week across Orlando.</p>
+    <a class="bigcall" href="tel:+14077106272"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg> Call (407) 710-6272</a>
+  </div>
+  <footer>Sample homepage concept prepared for Orlando Water Heater Pros · Built by Pinnacle Tech, Orlando FL</footer>
+<script src="assets/three.min.js"></script>
+<script>
+/* ============================================================
+   PREMIUM 3D ENGINE v2 — Orlando Water Heater Pros
+   Nine scenes: hero tank (drag-rotatable) + one per service
+   (valve / gearpair / prism / piston / orbs) + pipes (about),
+   droplet (reviews), pin (visit). Slow luxury motion, 3-point
+   studio lighting, polished metal/glass materials. Lazy init,
+   pause off-screen, DPR caps, LRU context cap, reduced-motion
+   stills, fail-silent.
+   ============================================================ */
+(function () {
+  try {
+    if (!window.THREE) return;
+    var MAT = 0xc7d2dc, ACC = 0xf08c21, SOFT = 0xa9c8e8;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function metal(color, rough) {
+      return new THREE.MeshStandardMaterial({ color: color, metalness: 0.95, roughness: (rough == null ? 0.2 : rough) });
+    }
+    function satin(color, rough) {
+      return new THREE.MeshStandardMaterial({ color: color, metalness: 0.55, roughness: (rough == null ? 0.42 : rough) });
+    }
+    function glass(color, op) {
+      return new THREE.MeshPhysicalMaterial({
+        color: color, metalness: 0.05, roughness: 0.06, clearcoat: 1, clearcoatRoughness: 0.12,
+        transparent: true, opacity: (op == null ? 0.6 : op)
+      });
+    }
+    function glow(color, op) {
+      return new THREE.MeshBasicMaterial({ color: color, transparent: true, opacity: (op == null ? 0.3 : op), blending: THREE.AdditiveBlending, depthWrite: false });
+    }
+    function addLights(scene) {
+      scene.add(new THREE.HemisphereLight(0xffffff, 0x2a2622, 0.75));
+      var key = new THREE.DirectionalLight(0xfff2dd, 1.6); key.position.set(4, 6, 7); scene.add(key);
+      var rim = new THREE.PointLight(ACC, 55, 60); rim.position.set(-6, 2, -3); scene.add(rim);
+      var fill = new THREE.PointLight(0xffffff, 26, 60); fill.position.set(-4, -3, 6); scene.add(fill);
+    }
+    function addDust(scene, n) {
+      var pos = new Float32Array(n * 3);
+      for (var i = 0; i < n; i++) {
+        pos[i * 3] = (Math.random() - 0.5) * 15;
+        pos[i * 3 + 1] = (Math.random() - 0.5) * 6.5;
+        pos[i * 3 + 2] = (Math.random() - 0.5) * 5 - 1;
+      }
+      var geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      var pts = new THREE.Points(geo, new THREE.PointsMaterial({
+        color: SOFT, size: 0.045, transparent: true, opacity: 0.45, depthWrite: false
+      }));
+      scene.add(pts);
+      return pts;
+    }
+    function gearGeo(teeth, radius, depth, hole) {
+      var shape = new THREE.Shape();
+      var inner = radius * 0.82, step = (Math.PI * 2) / teeth;
+      for (var i = 0; i < teeth; i++) {
+        var a = i * step;
+        var pts = [
+          [Math.cos(a) * inner, Math.sin(a) * inner],
+          [Math.cos(a + step * 0.28) * inner, Math.sin(a + step * 0.28) * inner],
+          [Math.cos(a + step * 0.38) * radius, Math.sin(a + step * 0.38) * radius],
+          [Math.cos(a + step * 0.62) * radius, Math.sin(a + step * 0.62) * radius],
+          [Math.cos(a + step * 0.72) * inner, Math.sin(a + step * 0.72) * inner]
+        ];
+        for (var j = 0; j < pts.length; j++) {
+          if (i === 0 && j === 0) shape.moveTo(pts[j][0], pts[j][1]); else shape.lineTo(pts[j][0], pts[j][1]);
+        }
+      }
+      shape.closePath();
+      if (hole) {
+        var h = new THREE.Path(); h.absarc(0, 0, hole, 0, Math.PI * 2, true); shape.holes.push(h);
+      }
+      return new THREE.ExtrudeGeometry(shape, { depth: depth, bevelEnabled: true, bevelThickness: 0.02, bevelSize: 0.02, bevelSegments: 1 });
+    }
+    function dropletGeo(r) {
+      var pts = [];
+      var prof = [[0, -1.15], [0.42, -1.02], [0.68, -0.72], [0.78, -0.3], [0.7, 0.18], [0.45, 0.62], [0.18, 0.98], [0, 1.2]];
+      for (var i = 0; i < prof.length; i++) pts.push(new THREE.Vector2(prof[i][0] * r, prof[i][1] * r));
+      return new THREE.LatheGeometry(pts, 40);
+    }
+    function pinGeo(r) {
+      var pts = [];
+      var prof = [[0, -1.35], [0.1, -0.95], [0.3, -0.55], [0.62, -0.05], [0.7, 0.35], [0.55, 0.78], [0.25, 1.05], [0, 1.12]];
+      for (var i = 0; i < prof.length; i++) pts.push(new THREE.Vector2(prof[i][0] * r, prof[i][1] * r));
+      return new THREE.LatheGeometry(pts, 36);
+    }
+
+    var builders = {
+      /* 1 — HERO TANK: polished steel tank, copper pipe, pilot flame.
+         Rotation is driven by the manager (drag + slow auto-turn). */
+      tank: function (scene) {
+        var grp = new THREE.Group();
+        var prof = [[0, -1.5], [0.72, -1.44], [0.92, -1.12], [0.96, 0.85], [0.82, 1.32], [0.45, 1.52], [0, 1.56]];
+        var pts = []; for (var i = 0; i < prof.length; i++) pts.push(new THREE.Vector2(prof[i][0], prof[i][1]));
+        grp.add(new THREE.Mesh(new THREE.LatheGeometry(pts, 44), metal(MAT, 0.24)));
+        var band = new THREE.Mesh(new THREE.TorusGeometry(0.965, 0.035, 10, 60), metal(ACC, 0.3));
+        band.rotation.x = Math.PI / 2; band.position.y = 0.55; grp.add(band);
+        var band2 = new THREE.Mesh(new THREE.TorusGeometry(0.94, 0.028, 10, 60), metal(ACC, 0.3));
+        band2.rotation.x = Math.PI / 2; band2.position.y = -0.85; grp.add(band2);
+        var pipe = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.7, 16), metal(ACC, 0.28));
+        pipe.position.y = 1.85; grp.add(pipe);
+        var elbow = new THREE.Mesh(new THREE.TorusGeometry(0.52, 0.1, 12, 24, Math.PI / 2), metal(ACC, 0.28));
+        elbow.position.set(1.35, -0.5, 0); elbow.rotation.z = Math.PI; grp.add(elbow);
+        var side = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 1.1, 14), metal(ACC, 0.28));
+        side.position.set(1.87, -1.05, 0); grp.add(side);
+        var flame = new THREE.Mesh(new THREE.ConeGeometry(0.15, 0.44, 20),
+          new THREE.MeshBasicMaterial({ color: ACC, transparent: true, opacity: 0.9 }));
+        flame.position.set(0, -1.78, 0.55); grp.add(flame);
+        var fl = new THREE.PointLight(ACC, 7, 6); fl.position.copy(flame.position); grp.add(fl);
+        var halo = new THREE.Mesh(new THREE.TorusGeometry(1.7, 0.025, 8, 72), metal(ACC, 0.3));
+        halo.rotation.x = Math.PI / 2.2; grp.add(halo);
+        scene.add(grp);
+        return { group: grp, update: function (t) {
+          flame.scale.y = 1 + Math.sin(t * 0.011) * 0.1 + Math.sin(t * 0.023) * 0.05;
+          fl.intensity = 6.4 + Math.sin(t * 0.017) * 0.9;
+          halo.rotation.z = t * 0.00004;
+        } };
+      },
+
+      /* 2 — INSTALLATION: pipe cross with a brass valve wheel */
+      valve: function (scene) {
+        var grp = new THREE.Group();
+        var pipe = new THREE.Mesh(new THREE.CylinderGeometry(0.21, 0.21, 3.4, 20), metal(MAT, 0.22));
+        pipe.rotation.z = Math.PI / 2; grp.add(pipe);
+        var riser = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 0.85, 14), metal(MAT, 0.22));
+        riser.position.y = 0.55; grp.add(riser);
+        var wheel = new THREE.Group();
+        wheel.add(new THREE.Mesh(new THREE.TorusGeometry(0.56, 0.06, 12, 48), metal(ACC, 0.24)));
+        for (var i = 0; i < 4; i++) {
+          var spoke = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 1.04, 8), metal(ACC, 0.24));
+          spoke.rotation.z = i * Math.PI / 4; wheel.add(spoke);
+        }
+        wheel.add(new THREE.Mesh(new THREE.SphereGeometry(0.13, 16, 12), metal(ACC, 0.22)));
+        wheel.position.y = 1.12; wheel.rotation.x = Math.PI / 2;
+        grp.add(wheel);
+        scene.add(grp);
+        return { group: grp, update: function (t) {
+          wheel.rotation.z = t * 0.00005;
+          grp.rotation.y = Math.sin(t * 0.00006) * 0.35;
+        } };
+      },
+
+      /* 3 — REPAIR: meshing gear pair, counter-rotating */
+      gearpair: function (scene) {
+        var grp = new THREE.Group();
+        var g1 = new THREE.Mesh(gearGeo(11, 1.05, 0.3, 0.3), metal(MAT, 0.24));
+        g1.position.set(-1.02, 0.18, -0.15); grp.add(g1);
+        var g2 = new THREE.Mesh(gearGeo(8, 0.76, 0.3, 0.24), metal(ACC, 0.27));
+        g2.position.set(0.98, -0.28, -0.15); g2.rotation.z = 0.2; grp.add(g2);
+        scene.add(grp);
+        return { group: grp, update: function (t) {
+          g1.rotation.z = t * 0.00007;
+          g2.rotation.z = 0.2 - t * 0.000096;
+          grp.rotation.y = Math.sin(t * 0.00005) * 0.25;
+        } };
+      },
+
+      /* 4 — TANKLESS: glass prism crystal with a slender beam */
+      prism: function (scene) {
+        var grp = new THREE.Group();
+        var crys = new THREE.Mesh(new THREE.OctahedronGeometry(1.12, 0), glass(SOFT, 0.5));
+        crys.scale.set(1, 1.85, 1); grp.add(crys);
+        var edges = new THREE.LineSegments(
+          new THREE.EdgesGeometry(new THREE.OctahedronGeometry(1.13, 0)),
+          new THREE.LineBasicMaterial({ color: ACC, transparent: true, opacity: 0.85 })
+        );
+        edges.scale.copy(crys.scale); grp.add(edges);
+        var beam = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 8.5, 8), glow(ACC, 0.32));
+        beam.rotation.z = 1.15; beam.position.set(-0.6, 0.4, -0.8); grp.add(beam);
+        var beam2 = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 8.5, 8), glow(SOFT, 0.22));
+        beam2.rotation.z = 1.02; beam2.position.set(0.9, -0.2, -0.9); grp.add(beam2);
+        scene.add(grp);
+        return { group: grp, update: function (t) {
+          crys.rotation.y = t * 0.00007; edges.rotation.y = t * 0.00007;
+          grp.position.y = Math.sin(t * 0.00045) * 0.07;
+        } };
+      },
+
+      /* 5 — BOILER: compressor piston in an open housing, eased stroke */
+      piston: function (scene) {
+        var grp = new THREE.Group();
+        var ringT = new THREE.Mesh(new THREE.TorusGeometry(1.05, 0.09, 12, 56), metal(MAT, 0.22));
+        ringT.rotation.x = Math.PI / 2; ringT.position.y = 1.15; grp.add(ringT);
+        var ringB = ringT.clone(); ringB.position.y = -1.15; grp.add(ringB);
+        for (var i = 0; i < 3; i++) {
+          var rod = new THREE.Mesh(new THREE.CylinderGeometry(0.055, 0.055, 2.3, 10), metal(MAT, 0.25));
+          var a = i * Math.PI * 2 / 3;
+          rod.position.set(Math.cos(a) * 1.05, 0, Math.sin(a) * 1.05); grp.add(rod);
+        }
+        var moving = new THREE.Group();
+        moving.add(new THREE.Mesh(new THREE.CylinderGeometry(0.82, 0.82, 0.72, 36), metal(ACC, 0.26)));
+        var shaft = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 1.15, 14), metal(MAT, 0.2));
+        shaft.position.y = 0.9; moving.add(shaft);
+        grp.add(moving);
+        scene.add(grp);
+        return { group: grp, update: function (t) {
+          moving.position.y = Math.sin(t * 0.00055) * 0.3;
+          grp.rotation.y = Math.sin(t * 0.00006) * 0.35;
+        } };
+      },
+
+      /* 6 — SOLAR: three glass orbs in quiet orbit (sun + collectors) */
+      orbs: function (scene) {
+        var grp = new THREE.Group();
+        var defs = [[0.58, 0, 0], [0.4, 1.35, 0.35], [0.3, -1.3, -0.3]];
+        var os = [];
+        for (var i = 0; i < defs.length; i++) {
+          var o = new THREE.Mesh(new THREE.SphereGeometry(defs[i][0], 36, 24), glass(i === 0 ? SOFT : ACC, i === 0 ? 0.5 : 0.4));
+          o.position.set(defs[i][1], defs[i][2], 0); grp.add(o); os.push(o);
+        }
+        var ring = new THREE.Mesh(new THREE.TorusGeometry(1.7, 0.025, 8, 72), metal(ACC, 0.3));
+        ring.rotation.x = Math.PI / 2.3; grp.add(ring);
+        scene.add(grp);
+        return { group: grp, update: function (t) {
+          for (var i = 0; i < os.length; i++) os[i].position.y = defs[i][2] + Math.sin(t * 0.0005 + i * 1.7) * 0.09;
+          ring.rotation.z = t * 0.00004;
+          grp.rotation.y = Math.sin(t * 0.00006) * 0.35;
+        } };
+      },
+
+      /* 7 — ABOUT: steel + copper pipe run with elbow and flanges */
+      pipes: function (scene) {
+        var grp = new THREE.Group();
+        function hPipe(y, mat) {
+          var p = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 3.6, 20), mat);
+          p.rotation.z = Math.PI / 2; p.position.y = y; grp.add(p);
+          var f = new THREE.Mesh(new THREE.TorusGeometry(0.24, 0.055, 10, 28), mat);
+          f.rotation.y = Math.PI / 2; f.position.set(-1.8, y, 0); grp.add(f);
+        }
+        hPipe(0.48, metal(MAT, 0.22)); hPipe(-0.48, metal(ACC, 0.26));
+        var elbow = new THREE.Mesh(new THREE.TorusGeometry(0.48, 0.17, 14, 28, Math.PI / 2), metal(MAT, 0.22));
+        elbow.position.set(1.8, 0, 0); elbow.rotation.z = Math.PI; grp.add(elbow);
+        scene.add(grp);
+        return { group: grp, update: function (t) {
+          grp.rotation.y = Math.sin(t * 0.00006) * 0.4;
+          grp.rotation.x = Math.sin(t * 0.00005) * 0.08;
+        } };
+      },
+
+      /* 8 — REVIEWS: glass droplet, slow bob */
+      droplet: function (scene) {
+        var grp = new THREE.Group();
+        grp.add(new THREE.Mesh(dropletGeo(1.05), glass(SOFT, 0.55)));
+        var core = new THREE.Mesh(dropletGeo(0.55), metal(ACC, 0.25));
+        core.position.y = -0.12; grp.add(core);
+        var ring = new THREE.Mesh(new THREE.TorusGeometry(1.35, 0.03, 10, 72), metal(MAT, 0.25));
+        ring.rotation.x = Math.PI / 2.15; grp.add(ring);
+        scene.add(grp);
+        return { group: grp, update: function (t) {
+          grp.rotation.y = t * 0.00009;
+          ring.rotation.z = t * 0.00005;
+        } };
+      },
+
+      /* 9 — VISIT: 3D location pin over a fine ground ring */
+      pin: function (scene) {
+        var grp = new THREE.Group();
+        var pin = new THREE.Mesh(pinGeo(1.05), metal(ACC, 0.2));
+        pin.position.y = 0.25; grp.add(pin);
+        var hole = new THREE.Mesh(new THREE.SphereGeometry(0.3, 18, 14), satin(0x14100c, 0.5));
+        hole.position.y = 0.62; grp.add(hole);
+        var ring = new THREE.Mesh(new THREE.TorusGeometry(0.85, 0.035, 8, 56), metal(MAT, 0.25));
+        ring.rotation.x = Math.PI / 2; ring.position.y = -1.2; grp.add(ring);
+        scene.add(grp);
+        return { group: grp, update: function (t) {
+          var bob = Math.sin(t * 0.00055) * 0.09;
+          pin.position.y = 0.25 + bob;
+          hole.position.y = 0.62 + bob;
+          var s = 1 + Math.sin(t * 0.00055 + 1.2) * 0.05; ring.scale.set(s, s, 1);
+          grp.rotation.y = Math.sin(t * 0.00006) * 0.3;
+        } };
+      }
+    };
+
+    /* ---------- shared manager ---------- */
+    var MAX_CONTEXTS = 9;
+    var entries = [];
+    var canvases = document.querySelectorAll('canvas.d3d');
+    for (var ci = 0; ci < canvases.length; ci++) {
+      entries.push({
+        canvas: canvases[ci], key: canvases[ci].getAttribute('data-scene'),
+        hero: canvases[ci].className.indexOf('hero3d') > -1,
+        drag: canvases[ci].getAttribute('data-drag') === '1',
+        inited: false, running: false, renderer: null, scene: null, camera: null,
+        built: null, dust: null, lastSeen: 0, phase: ci * 1.7,
+        rotY: 0.6, rotX: 0, velY: 0, dragging: false, lastPX: 0, lastPY: 0
+      });
+    }
+    if (!entries.length) return;
+
+    function layoutEntry(e) {
+      if (!e.inited) return;
+      var w = e.canvas.clientWidth, h = e.canvas.clientHeight;
+      if (!w || !h) return;
+      e.renderer.setSize(w, h, false);
+      e.camera.aspect = w / h;
+      /* wide, short bands: move closer so the model fills the frame */
+      var baseZ = e.hero ? 8.6 : 8.2;
+      var f = e.camera.aspect > 1.6 ? Math.max(0.55, 1.6 / e.camera.aspect) : 1;
+      e.camera.position.z = baseZ * f;
+      e.camera.updateProjectionMatrix();
+    }
+    function disposeEntry(e) {
+      if (!e.inited) return;
+      try { e.renderer.dispose(); } catch (err) {}
+      e.inited = false; e.running = false; e.renderer = null; e.scene = null; e.built = null; e.dust = null;
+    }
+    function enforceCap(newEntry) {
+      var inited = [];
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].inited && entries[i] !== newEntry) inited.push(entries[i]);
+      }
+      while (inited.length >= MAX_CONTEXTS) {
+        var oldest = null;
+        for (var j = 0; j < inited.length; j++) {
+          if (!inited[j].running && (!oldest || inited[j].lastSeen < oldest.lastSeen)) oldest = inited[j];
+        }
+        if (!oldest) oldest = inited[0];
+        disposeEntry(oldest);
+        inited.splice(inited.indexOf(oldest), 1);
+      }
+    }
+    function initEntry(e) {
+      var builder = builders[e.key];
+      if (!builder) return;
+      enforceCap(e);
+      var renderer = new THREE.WebGLRenderer({ canvas: e.canvas, alpha: true, antialias: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, e.hero ? 1.75 : 1.5));
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
+      camera.position.set(0, 0, e.hero ? 8.6 : 8.2);
+      addLights(scene);
+      e.built = builder(scene);
+      e.dust = addDust(scene, e.hero ? 52 : 32);
+      e.renderer = renderer; e.scene = scene; e.camera = camera; e.inited = true;
+      layoutEntry(e);
+      if (reduced) { applyDrag(e); renderer.render(scene, camera); }
+    }
+    function applyDrag(e) {
+      if (e.drag && e.built) {
+        e.built.group.rotation.y = e.rotY;
+        e.built.group.rotation.x = e.rotX;
+      }
+    }
+
+    /* drag-to-rotate on the hero canvas */
+    for (var di = 0; di < entries.length; di++) {
+      (function (e) {
+        if (!e.drag) return;
+        var cv = e.canvas;
+        cv.addEventListener('pointerdown', function (ev) {
+          e.dragging = true; e.lastPX = ev.clientX; e.lastPY = ev.clientY; e.velY = 0;
+          try { cv.setPointerCapture(ev.pointerId); } catch (err) {}
+        });
+        cv.addEventListener('pointermove', function (ev) {
+          if (!e.dragging) return;
+          var dx = ev.clientX - e.lastPX, dy = ev.clientY - e.lastPY;
+          e.lastPX = ev.clientX; e.lastPY = ev.clientY;
+          e.rotY += dx * 0.008; e.velY = dx * 0.008;
+          e.rotX += dy * 0.004;
+          if (e.rotX > 0.45) e.rotX = 0.45;
+          if (e.rotX < -0.45) e.rotX = -0.45;
+          if (reduced) { applyDrag(e); if (e.inited) e.renderer.render(e.scene, e.camera); }
+        });
+        function endDrag() { e.dragging = false; }
+        cv.addEventListener('pointerup', endDrag);
+        cv.addEventListener('pointercancel', endDrag);
+      })(entries[di]);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (obs) {
+        for (var i = 0; i < obs.length; i++) {
+          var en = obs[i], e = null;
+          for (var j = 0; j < entries.length; j++) { if (entries[j].canvas === en.target) { e = entries[j]; break; } }
+          if (!e) continue;
+          if (en.isIntersecting) {
+            e.lastSeen = Date.now();
+            if (!e.inited) initEntry(e);
+            e.running = true;
+            if (reduced && e.inited) { applyDrag(e); e.renderer.render(e.scene, e.camera); }
+          } else { e.running = false; }
+        }
+      }, { rootMargin: '320px 0px', threshold: 0.01 });
+      for (var oi = 0; oi < entries.length; oi++) io.observe(entries[oi].canvas);
+    } else {
+      for (var fi = 0; fi < entries.length; fi++) { initEntry(entries[fi]); entries[fi].running = true; }
+    }
+
+    var mx = 0, my = 0, tx = 0, ty = 0;
+    window.addEventListener('pointermove', function (ev) {
+      tx = (ev.clientX / window.innerWidth - 0.5) * 2;
+      ty = (ev.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
+    window.addEventListener('resize', function () {
+      for (var i = 0; i < entries.length; i++) layoutEntry(entries[i]);
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) { for (var i = 0; i < entries.length; i++) layoutEntry(entries[i]); }
+    });
+
+    function loop(t) {
+      requestAnimationFrame(loop);
+      if (document.hidden) return;
+      mx += (tx - mx) * 0.025; my += (ty - my) * 0.025;
+      for (var i = 0; i < entries.length; i++) {
+        var e = entries[i];
+        if (!e.inited || !e.running) continue;
+        if (!e.canvas.clientWidth) continue;
+        e.built.update(t);
+        if (e.drag) {
+          if (!e.dragging) {
+            e.rotY += 0.0016 + e.velY;      /* slow auto-turn + leftover inertia */
+            e.velY *= 0.94;
+            e.rotX += (0 - e.rotX) * 0.02;  /* ease tilt back to level */
+          }
+          applyDrag(e);
+        }
+        var gx = e.hero && e.camera.aspect > 1.05 ? 1.55 : 0;
+        e.built.group.position.x = gx;
+        if (e.key !== 'prism') e.built.group.position.y = Math.sin(t * 0.00042 + e.phase) * 0.07;
+        if (e.dust) e.dust.rotation.y = t * 0.000008;
+        e.camera.position.x = mx * (e.hero ? 0.4 : 0.3);
+        e.camera.position.y = -my * 0.24;
+        e.camera.lookAt(gx * 0.55, 0, 0);
+        e.renderer.render(e.scene, e.camera);
+      }
+    }
+    if (!reduced) requestAnimationFrame(loop);
+  } catch (e) { /* 3D is decorative only — fail silent */ }
+})();
+</script>
+</body>
+</html>
